@@ -62,6 +62,10 @@ sub send_email {
             @to,
             From    => $data->{from},
             Subject => $data->{subject},
+            'Content-Type'  => $data->{content_type} ||
+                        'text/html; charset=us-ascii',
+            'Content-Transfer-Encoding' => $data->{content_transfer_encoding} ||
+                        'quoted-printable',
         ],
         body => $data->{body},
     );
